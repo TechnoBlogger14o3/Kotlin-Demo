@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.kotlin.demo.AppSingleton
-import com.kotlin.demo.utility.CheckNetworkState
 import com.kotlin.demo.R
 import com.kotlin.demo.databinding.FragmentImageBinding
 import com.kotlin.demo.supports.AppConstants
+import com.kotlin.demo.utility.CheckNetworkState
 
 /***
  * Created by Techno Blogger on 22/10/17.
@@ -26,10 +26,10 @@ class FragmentImage : Fragment() {
         fragmentImageBinding.btnDownload.setOnClickListener {
             if (CheckNetworkState(context).isNetworkAvailable) {
                 Glide.with(context)
-                        .load(AppConstants.Constants().strImageUrl)
+                        .load(AppConstants().strImageUrl)
                         .into(fragmentImageBinding.imgPreview)
             } else {
-                AppSingleton.instance.activityInstance!!.showSnackBar(view, AppConstants.Constants().strNoInternetConnection)
+                AppSingleton.instance.activityInstance!!.showSnackBar(view, AppConstants().strNoInternetConnection)
             }
         }
         return rootView

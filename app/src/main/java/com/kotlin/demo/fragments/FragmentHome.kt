@@ -35,15 +35,16 @@ class FragmentHome : Fragment() {
             strUserName = fragmentHomeBinding.edtUser.text.toString()
             if (strUserName.length > 3) {
                 val bundle = Bundle()
-                bundle.putString(AppConstants.BundleKeys().strBundleUserName, strUserName)
+                bundle.putString(AppConstants().strBundleUserName, strUserName)
                 AppSingleton.instance.flowOrganization.add(FragmentNextWithBundle(), bundle, true)
             } else {
-                AppSingleton.instance.activityInstance!!.showSnackBar(rootView, AppConstants.Constants().strEnterValidUserName)
+                AppSingleton.instance.activityInstance!!.showSnackBar(rootView, AppConstants().strEnterValidUserName)
             }
         }
 
         fragmentHomeBinding.btnReset.setOnClickListener {
             fragmentHomeBinding.edtUser.setText("")
+            fragmentHomeBinding.edtEmail.setText("")
             AppSingleton.appPreference!!.userEmail = ""
         }
 
@@ -51,9 +52,9 @@ class FragmentHome : Fragment() {
             strEmail = fragmentHomeBinding.edtEmail.text.toString()
             if (MyValidations().isValidEmail(strEmail)) {
                 AppSingleton.appPreference!!.userEmail = strEmail
-                AppSingleton.instance.activityInstance!!.showSnackBar(rootView, AppConstants.Constants().strUserNameSaved)
+                AppSingleton.instance.activityInstance!!.showSnackBar(rootView, AppConstants().strUserNameSaved)
             } else {
-                AppSingleton.instance.activityInstance!!.showSnackBar(rootView, AppConstants.Constants().strEnterValidEmail)
+                AppSingleton.instance.activityInstance!!.showSnackBar(rootView, AppConstants().strEnterValidEmail)
             }
         }
 

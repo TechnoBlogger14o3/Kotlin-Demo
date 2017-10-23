@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     finish()
                     return
                 } else {
-                    Toast.makeText(AppSingleton.instance.activityInstance, AppConstants.Constants().strPressTwice, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(AppSingleton.instance.activityInstance, AppConstants().strPressTwice, Toast.LENGTH_SHORT).show()
                     Handler().postDelayed({ backBtnCount = 0 }, 500)
                 }
             }

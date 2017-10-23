@@ -30,7 +30,7 @@ class FragmentNextWithBundle : Fragment(), View.OnClickListener {
 
         // Getting value by Bundle
         val args = arguments
-        userName = args.getString(AppConstants.BundleKeys().strBundleUserName)
+        userName = args.getString(AppConstants().strBundleUserName)
 
         // Getting value by Shared Preferences
         userEmail = AppSingleton.appPreference!!.userEmail
@@ -49,7 +49,7 @@ class FragmentNextWithBundle : Fragment(), View.OnClickListener {
             R.id.btnToast -> Toast.makeText(AppSingleton.instance.activityInstance, userName, Toast.LENGTH_SHORT).show()
             R.id.btnSnackBar -> AppSingleton.instance.activityInstance!!.showSnackBar(view, userName)
             R.id.btnGetEmail -> if (userEmail == "") {
-                AppSingleton.instance.activityInstance!!.showSnackBar(view, AppConstants.Constants().strEmailNotProvided)
+                AppSingleton.instance.activityInstance!!.showSnackBar(view, AppConstants().strEmailNotProvided)
             } else {
                 fragmentNext.txtUserEmail.text = userEmail
             }

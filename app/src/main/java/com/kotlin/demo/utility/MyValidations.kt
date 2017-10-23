@@ -1,6 +1,5 @@
 package com.kotlin.demo.utility
 
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class MyValidations {
@@ -14,8 +13,8 @@ class MyValidations {
         return matcher.matches()
     }
 
-    //String validator
-    fun isValidString(data: String?): Boolean {
+    // String validator
+    private fun isValidString(data: String?): Boolean {
         return !(data == null || data.trim { it <= ' ' }.isEmpty() || data.equals("null", ignoreCase = true))
     }
 

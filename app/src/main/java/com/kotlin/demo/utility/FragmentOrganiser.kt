@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
-import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import java.util.*
 
@@ -36,16 +35,16 @@ class FragmentOrganiser(private val _activity: FragmentActivity, private val _id
         if (framentList != null) {
             for (f in framentList) {
                 if (f != null)
-                    Log.e("", "f name:" + f.javaClass.name)
+                    AppLogger().e("", "f name:" + f.javaClass.name)
             }
         }
         if (_fragmnet_manager.backStackEntryCount > 0) {
             _fragmnet_manager.popBackStack(null,
                     FragmentManager.POP_BACK_STACK_INCLUSIVE)
             _fragmnet_manager.beginTransaction().commit()
-            _list_instant_state?.clear()
-            _list_back_state?.clear()
-            Log.e("",
+            _list_instant_state.clear()
+            _list_back_state.clear()
+            AppLogger().e("",
                     "Count back entitty" + _fragmnet_manager.backStackEntryCount)
         }
 
@@ -54,7 +53,7 @@ class FragmentOrganiser(private val _activity: FragmentActivity, private val _id
     fun popUpFragment(popBackTo: Int) {
         try {
             if (popBackTo > _fragmnet_manager.backStackEntryCount) {
-                android.util.Log.e("exception",
+                AppLogger().e("exception",
                         "popBackTo count is grater then back stack count")
                 return
             }
@@ -62,8 +61,8 @@ class FragmentOrganiser(private val _activity: FragmentActivity, private val _id
             val id = _fragmnet_manager.getBackStackEntryAt(count).id
             val name = _fragmnet_manager.getBackStackEntryAt(count)
                     .name
-            android.util.Log.e(count.toString() + " the fragment is " + id, "" + name)
-            android.util.Log.e("", "yes poped " + count)
+            AppLogger().e(count.toString() + " the fragment is " + id, "" + name)
+            AppLogger().e("", "yes poped " + count)
             _fragmnet_manager.popBackStack(count,
                     FragmentManager.POP_BACK_STACK_INCLUSIVE)
         } catch (e: Exception) {
@@ -78,7 +77,7 @@ class FragmentOrganiser(private val _activity: FragmentActivity, private val _id
                 // for (int i = 0; i <
                 // _fragmnet_manager.getBackStackEntryCount(); i++) {
                 for (i in _fragmnet_manager.backStackEntryCount downTo 0) {
-                    Log.e("the fragment is", "" + _fragmnet_manager.fragments[i].javaClass.simpleName)
+                    AppLogger().e("the fragment is", "" + _fragmnet_manager.fragments[i].javaClass.simpleName)
                     try {
                         if (_list_back_state != null && _list_back_state.size > 0) {
                             _list_back_state
@@ -153,7 +152,7 @@ class FragmentOrganiser(private val _activity: FragmentActivity, private val _id
                 .equals("FragmentUserHomeMyOrder", ignoreCase = true)) {
             if (!isToAdd(toFragment)) {
                 try {
-                    Log.e("Current Fragment", "" + toFragment.javaClass.simpleName)
+                    AppLogger().e("Current Fragment", "" + toFragment.javaClass.simpleName)
                     if (toFragment.javaClass.simpleName
                             .equals("FragmentUserHomeMyOrder", ignoreCase = true)) {
                         popUpFragment(toFragment.javaClass.simpleName)
@@ -247,7 +246,7 @@ class FragmentOrganiser(private val _activity: FragmentActivity, private val _id
     fun onResume() {
         isPaused = false
         if (_list_instant_state != null) {
-            Log.e("", "size to exc:" + _list_instant_state.size)
+            AppLogger().e("", "size to exc:" + _list_instant_state.size)
             for (i in _list_instant_state.indices) {
                 val instanseState = _list_instant_state[i]
                 when (instanseState._fragment_type) {
