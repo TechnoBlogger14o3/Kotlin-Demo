@@ -22,7 +22,6 @@ import com.kotlin.demo.R
 import com.kotlin.demo.databinding.ActivityMainBinding
 import com.kotlin.demo.fragments.FragmentHome
 import com.kotlin.demo.fragments.FragmentImage
-import com.kotlin.demo.fragments.FragmentNextWithBundle
 import com.kotlin.demo.supports.AppConstants
 import com.kotlin.demo.utility.FragmentBackHelper
 import kotlinx.android.synthetic.main.activity_main.*
@@ -59,12 +58,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
-                AppSingleton.instance.flowOrganization.replace(FragmentHome(), false)
                 AppSingleton.instance.flowOrganization.clearBackStack()
+                AppSingleton.instance.flowOrganization.replace(FragmentHome(), false)
             }
             R.id.nav_image -> {
-                AppSingleton.instance.flowOrganization.replace(FragmentImage(), false)
                 AppSingleton.instance.flowOrganization.clearBackStack()
+                AppSingleton.instance.flowOrganization.replace(FragmentImage(), false)
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)

@@ -19,8 +19,8 @@ import com.kotlin.demo.utility.MyValidations
  */
 class FragmentHome : Fragment() {
 
-    var strUserName: String = ""
-    var strEmail: String = ""
+    private var strUserName: String = ""
+    private var strEmail: String = ""
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val fragmentHomeBinding: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
@@ -29,7 +29,6 @@ class FragmentHome : Fragment() {
         AppSingleton.instance.activityInstance!!.setTitle(resources.getString(R.string.home))
 
         appPreference = (AppPreferences(context))
-        val userEmail = AppSingleton.appPreference!!.userEmail
 
         // Implementing onClickListener on Button
         fragmentHomeBinding.btnNext.setOnClickListener {
@@ -37,7 +36,7 @@ class FragmentHome : Fragment() {
             if (strUserName.length > 3) {
                 val bundle = Bundle()
                 bundle.putString(AppConstants.BundleKeys().strBundleUserName, strUserName)
-                AppSingleton.instance.flowOrganization.replace(FragmentNextWithBundle(), bundle, true)
+                AppSingleton.instance.flowOrganization.add(FragmentNextWithBundle(), bundle, true)
             } else {
                 AppSingleton.instance.activityInstance!!.showSnackBar(rootView, AppConstants.Constants().strEnterValidUserName)
             }

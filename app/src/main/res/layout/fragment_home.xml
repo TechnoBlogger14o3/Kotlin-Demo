@@ -6,6 +6,7 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:background="@color/colorWhite"
+        android:clickable="true"
         android:orientation="vertical">
 
         <EditText
