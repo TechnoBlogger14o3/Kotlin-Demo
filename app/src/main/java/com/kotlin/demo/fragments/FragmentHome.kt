@@ -29,7 +29,7 @@ class FragmentHome : Fragment() {
         AppSingleton.instance.activityInstance!!.setTitle(resources.getString(R.string.home))
 
         appPreference = (AppPreferences(context))
-        val userName = AppSingleton.appPreference!!.userEmail
+        val userEmail = AppSingleton.appPreference!!.userEmail
 
         // Implementing onClickListener on Button
         fragmentHomeBinding.btnNext.setOnClickListener {

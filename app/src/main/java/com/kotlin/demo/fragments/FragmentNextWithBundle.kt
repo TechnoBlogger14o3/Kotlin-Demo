@@ -18,16 +18,16 @@ import com.kotlin.demo.supports.AppConstants
  */
 class FragmentNextWithBundle : Fragment(), View.OnClickListener {
 
-    var userName: String = ""
-    var userEmail: String = ""
+    private var userName: String = ""
+    private var userEmail: String = ""
     private lateinit var fragmentNext: FragmentNextBinding
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         fragmentNext = DataBindingUtil.inflate(inflater, R.layout.fragment_next, container, false)
         val rootView = fragmentNext.root
-
         AppSingleton.instance.activityInstance!!.setTitle(resources.getString(R.string.username))
+
         // Getting value by Bundle
         val args = arguments
         userName = args.getString(AppConstants.BundleKeys().strBundleUserName)
@@ -37,6 +37,7 @@ class FragmentNextWithBundle : Fragment(), View.OnClickListener {
 
         fragmentNext.txtUserName.text = "UserName is $userName"
 
+        // Assigning onClickListener
         fragmentNext.btnSnackBar.setOnClickListener(this)
         fragmentNext.btnToast.setOnClickListener(this)
         fragmentNext.btnGetEmail.setOnClickListener(this)

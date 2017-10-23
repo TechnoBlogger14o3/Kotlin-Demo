@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     // Setting the toolbar title.
     fun setTitle(title: String) {
-        txtTitle.setText(title)
+        txtTitle.text = title
     }
 
 }
