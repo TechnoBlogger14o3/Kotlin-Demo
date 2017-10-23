@@ -6,12 +6,18 @@
 
     <string name="action_settings">Settings</string>
     <string name="type_your_name">Type Your Name</string>
+    <string name="type_your_email">Type Your eMail</string>
     <string name="go_to_next_fragment">Go to Next Fragment</string>
     <string name="reset">Reset</string>
+    <string name="save">Save the Email</string>
+    <string name="get">Get the Email</string>
     <string name="your_name">Your Name is :</string>
     <string name="home">Home</string>
     <string name="image">Image Download</string>
     <string name="logout">LogOut</string>
     <string name="username">UserName</string>
     <string name="sample_image_downloading_using_glide">Sample Image Downloading using Glide, Click on the below button to Download</string>
+    <string name="show_message_in_snackbar">Show Message in Snackbar</string>
+    <string name="show_toast">Show Toast</string>
+    <string name="click_on_the_below_button_to_get_the_email_id">Click on the below Button to get the Email Id</string>
 </resources>

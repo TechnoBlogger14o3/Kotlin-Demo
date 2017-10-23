@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         val activityMainBinding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        toolbar.setTitle(" ")
+        toolbar.title = " "
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { _ ->

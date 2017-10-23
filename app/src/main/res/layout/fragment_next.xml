@@ -14,18 +14,38 @@
             android:clickable="false"
             android:focusable="false" />
 
-
         <Button
             android:id="@+id/btnToast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Toast" />
+            android:text="@string/show_toast" />
 
         <Button
             android:id="@+id/btnSnackBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Message in Snackbar" />
+            android:text="@string/show_message_in_snackbar" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/txtUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/click_on_the_below_button_to_get_the_email_id" />
+
+
+        <Button
+            android:id="@+id/btnGetEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get" />
 
     </LinearLayout>
 </layout>

@@ -3,6 +3,7 @@ package com.kotlin.demo
 import android.app.Application
 
 import com.kotlin.demo.activities.MainActivity
+import com.kotlin.demo.supports.AppPreferences
 import com.kotlin.demo.utility.FragmentOrganiser
 
 
@@ -38,8 +39,14 @@ class AppSingleton : Application() {
         fragmentOrganiser = null
     }
 
+    override fun onCreate() {
+        appPreference = AppPreferences(applicationContext)
+        super.onCreate()
+    }
+
     companion object {
         private var appSingleton: AppSingleton? = null
+        var appPreference: AppPreferences? = null
         val instance: AppSingleton
             get() {
                 if (appSingleton == null)

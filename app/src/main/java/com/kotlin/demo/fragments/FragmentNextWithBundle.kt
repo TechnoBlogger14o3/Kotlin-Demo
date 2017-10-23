@@ -19,21 +19,27 @@ import com.kotlin.demo.supports.AppConstants
 class FragmentNextWithBundle : Fragment(), View.OnClickListener {
 
     var userName: String = ""
+    var userEmail: String = ""
+    private lateinit var fragmentNext: FragmentNextBinding
+
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val fragmentNext: FragmentNextBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_next, container, false)
+        fragmentNext = DataBindingUtil.inflate(inflater, R.layout.fragment_next, container, false)
         val rootView = fragmentNext.root
 
         AppSingleton.instance.activityInstance!!.setTitle(resources.getString(R.string.username))
+        // Getting value by Bundle
         val args = arguments
         userName = args.getString(AppConstants.BundleKeys().strBundleUserName)
 
-        if (userName != null) {
-            fragmentNext.txtUserName.text = "UserName is $userName"
-        }
+        // Getting value by Shared Preferences
+        userEmail = AppSingleton.appPreference!!.userEmail
+
+        fragmentNext.txtUserName.text = "UserName is $userName"
 
         fragmentNext.btnSnackBar.setOnClickListener(this)
         fragmentNext.btnToast.setOnClickListener(this)
+        fragmentNext.btnGetEmail.setOnClickListener(this)
         return rootView
     }
 
@@ -41,7 +47,11 @@ class FragmentNextWithBundle : Fragment(), View.OnClickListener {
         when (view!!.id) {
             R.id.btnToast -> Toast.makeText(AppSingleton.instance.activityInstance, userName, Toast.LENGTH_SHORT).show()
             R.id.btnSnackBar -> AppSingleton.instance.activityInstance!!.showSnackBar(view, userName)
+            R.id.btnGetEmail -> if (userEmail == "") {
+                AppSingleton.instance.activityInstance!!.showSnackBar(view, AppConstants.Constants().strEmailNotProvided)
+            } else {
+                fragmentNext.txtUserEmail.text = userEmail
+            }
         }
     }
-
 }
