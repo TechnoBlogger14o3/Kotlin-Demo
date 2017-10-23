@@ -8,3 +8,4 @@ This app contains
 05. Toast, Snackbar, and a Custom Log Class
 06. Image downloading through Glide
 07. Singleton Class
+08. Using Shared Preferences
